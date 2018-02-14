@@ -1,0 +1,61 @@
+1.
+user
+message
+thread
+date_time
+
++------------+          +-------------+          +------------+
+|   User     | 1   many |   Message   | many   1 |   Thread   |
+| id         +----------+ id          +----------+ id         |
+| name       |          | message     |          | name       |
++------------+          | person_id   |          +------------+
+                        | thread_id   |
+                        +-------------+
+
+
+2.
+Patient
+Patient phone
+Date and time
+Appointment status
+Dentist name
+
++-------------+          +-----------------+          +-------------+
+|   Patient   | 1   many |   Appointment   | many   1 |   Dentist   |
+| id          +----------+ id              +----------+ id          |
+| name        |          | date_time       |          | name        |
+| phone       |          | status          |          +-------------+
++-------------+          | patient_id      |
+                         | dentist_id      |
+                         +-----------------+
+
+
+3.
+Event name
+Event date and date_time
+Event organizer (member)
+Event number of ticket
+transaction status (hold, picked up)
+number of ticket in a transaction
+Customer name (member)
+Member name
+Member phone
+
++------------+           +-----------------------+
+|   Member   | 1    many |   Event               |
+| id         +-----------+ id                    |
+| name       |           | date_time             |
+| phone      |           | member_id (organizer) |
+|            |           | number_of_ticket      |
++------------+           +-----------------------+
+       \ 1                     / 1
+        \                     /
+         \ many              / many
+          +-----------------+
+          |   Transaction   |
+          | id              |
+          | qty_of_ticket   |
+          | status          |
+          | event_id        |
+          | member_id       |
+          +-----------------+

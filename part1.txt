@@ -1,0 +1,56 @@
+1. Customers with orders
++----------------------+                    +----------------+
+|   Customer           |                    |   Order        |
+| id                   | 1             many | id             |
+| name                 +--------------------+ number         |
+| mailing_address      |                    | date           |
+| email                |                    | customer_id    |
++----------------------+                    +----------------+
+
+
+2. People with addresses
++--------------+          +---------------+          +--------------+
+|   Person     |          |   Residence   |          |   City       |
+| id           | many   1 | id            | many   1 | id           |
+| name         +----------| address       +----------+ name         |
+| age          |          | year_built    |          | year_founded |
+| residence_id |          | city_id       |          | province_id  |
++--------------+          +---------------+          +-------+------+
+                                                             | many
+                                                             |
+                                                             | 1
+                        +-----------------+          +-------+------+
+                        |   Country       |          |   Province   |
+                        | id              | 1   many | id           |
+                        | name            +----------+ name         |
+                        | year_founded    |          | year_founded |
+                        | national_animal |          | country_id   |
+                        +-----------------+          +--------------+
+
+
+3. A library system
++------------+
+|   Author   |
+| id         |
+| name       |
++-----+------+
+      | 1
+      |
+      | many
++-----+-----+          +-------------+          +-------------+
+|   Book    |          |   Hold      |          |   Patron    |
+| id        | 1   many | id          | many   1 | id          |
+| title     +----------+ date_placed +----------+ name        |
+| isbn      |          | book_id     |          | card_number |
+| author_id |          | patron_id   |          | email       |
++-----------+          +-------------+          +-------------+
+             \ 1                               / 1
+              \                               /
+               \ many                        / many
+                +---------------------------+
+                |   Loan                    |
+                | due_date                  |
+                | renewed?                  |
+                | book_id                   |
+                | patron_id                 |
+                +---------------------------+

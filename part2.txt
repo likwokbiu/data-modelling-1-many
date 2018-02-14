@@ -1,0 +1,56 @@
+1.
++-----------+          +----------+          +--------------+
+|   Actor   |          |   Role   |          |   Play       |
+| id        | 1   many | id       | many   1 | id           |
+| name      +----------+ name     +----------+ name         |
+|           |          | actor_id |          | director_id  |
++-----------+          | play_id  |          +-------+------+
+                       +----------+                  | many
+                                                     |
+                                                     | 1
+                                             +-------+-------+
+                                             |   Director    |
+                                             | id            |
+                                             | name          |
+                                             +---------------+
+
+
+
+
+
+2.
++---------+          +------------------+          +-------------------+
+|   Pet   |          |   Appointment    |          |   Animal_clinic   |
+| id      | 1   many | id               | many   1 | id                |
+| name    +----------+ date_time        +----------+ name              |
+| breed   |          | animal_clinic_id |          | veterinarian_id   |
+| owner_id|          | pet_id           |          |                   |
++----+----+          | veterinarian_id  |          +---------+---------+
+     | many          +------------------+                    | many
+     |                              many \________           |
+     | 1                                        1 \          | 1
++----+----+                                        +---------+---------+
+|   Owner |                                        |   Veterinarian    |
+| id      |                                        | id                |
+| name    |                                        | name              |
+| phone   |                                        |                   |
++---------+                                        +-------------------+
+
+
+
+3.
++----------------+          +----------------+          +-----------------+
+|   Restaurant   |          |   Review       |          |   Publication   |
+| id             | 1   many | id             | many   1 | id              |
+| name           +----------+ restaurant_id  +----------+ name            |
+| chef           |          | publication_id |          |                 |
++----------------+          | food_critic_id |          +-----------------+
+                            +-------+--------+
+                                    | many
+                                    |
+                                    | 1
+                            +-------+--------+
+                            |   Food_critiic |
+                            | id             |
+                            | name           |
+                            +----------------+
